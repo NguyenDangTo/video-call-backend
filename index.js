@@ -5,7 +5,12 @@ const io = require("socket.io")(httpServer, {
   cors: {origin: "*"},
 });
 const cors = require("cors");
-app.use(cors());
+const corsOptions = {
+  origin: "https://video-call-frontend-eight.vercel.app",
+};
+
+// Enable CORS with specific origin
+app.use(cors(corsOptions));
 
 io.on("connection", (socket) => {
   console.log(`New client connected ${socket.id}`);
